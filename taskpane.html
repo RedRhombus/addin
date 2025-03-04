@@ -2,18 +2,18 @@
 <html>
 <head>
     <title>Support Ticket Add-In</title>
+    <script src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
     <script>
         function openSupportEmail() {
-            Office.context.mailbox.displayNewMessageForm({
-                toRecipients: ["support@redrhombus.com.au"],
-                subject: "[Support Request]",
-                body: "Issue Type:\nDescription:\nAffected Device:\nSteps to Reproduce:\n"
+            Office.onReady(() => {
+                Office.context.mailbox.displayNewMessageForm({
+                    toRecipients: ["support@redrhombus.com.au"],
+                    subject: "[Support Request]",
+                    body: "Issue Type:\nDescription:\nAffected Device:\nSteps to Reproduce:\n"
+                });
             });
         }
-
-        Office.onReady(() => {
-            openSupportEmail(); // Automatically trigger the email on load
-        });
+        window.onload = openSupportEmail;
     </script>
 </head>
 <body>
